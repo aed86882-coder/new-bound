@@ -1,0 +1,10 @@
+addpath("src");
+addpath("src/utils");
+addpath("src/autograd");
+addpath("src/evaluation");
+addpath("src/optimizer");
+addpath("src/complete_split");
+addpath("src/io");
+addpath("src/control");
+addpath("src/init");
+addpath("src/verify");
