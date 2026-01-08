@@ -128,8 +128,8 @@ class Workspace:
         self.globstage = GlobalStage()
         self.globstage.Build(max_level, self.parts)
         
-        print(f"[INFO] Workspace built with {self.param_manager.num_input} parameters")
-        print(f"[INFO] Parts created at levels 2-{max_level}")
+        # print(f"[INFO] Workspace built with {self.param_manager.num_input} parameters")
+        # print(f"[INFO] Parts created at levels 2-{max_level}")
         for level in range(2, max_level + 1):
             if level in self.parts:
                 print(f"       Level {level}: {len(self.parts[level])} parts")
@@ -207,7 +207,6 @@ class Workspace:
         ceq = []
         
         # Phase 1: EvaluateInit - Initialize all parts
-        print("[DEBUG] Evaluate Phase 1: Init")
         for level in range(2, self.max_level + 1):
             if level in self.parts:
                 for part in self.parts[level].values():
@@ -216,7 +215,6 @@ class Workspace:
         self.globstage.EvaluateInit()
         
         # Phase 2: EvaluatePre - Propagate part_frac from top to bottom
-        print("[DEBUG] Evaluate Phase 2: Pre")
         self.globstage.EvaluatePre()
         
         for level in range(self.max_level, 1, -1):  # From max_level down to 2
@@ -226,7 +224,6 @@ class Workspace:
                         part.EvaluatePre()
         
         # Phase 3: EvaluatePost - Compute contributions from bottom to top
-        print("[DEBUG] Evaluate Phase 3: Post")
         for level in range(2, self.max_level + 1):  # From 2 up to max_level
             if level in self.parts:
                 for part in self.parts[level].values():
@@ -236,7 +233,6 @@ class Workspace:
         self.globstage.EvaluatePost(self.parts)
         
         # Collect constraints from parts
-        print("[DEBUG] Collecting constraints")
         
         # Lagrange constraints (if needed for optimization)
         # for level in range(3, self.max_level + 1):
@@ -248,8 +244,6 @@ class Workspace:
         # Global stage Lagrange constraints
         # if hasattr(self.globstage, 'GetLagrangeConstraints'):
         #     ceq.extend(self.globstage.GetLagrangeConstraints())
-        
-        print(f"[DEBUG] Evaluation complete: {len(c)} inequality, {len(ceq)} equality constraints")
         
         return c, ceq
     

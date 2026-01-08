@@ -52,7 +52,6 @@ def main():
     # Check if data directory exists
     if not os.path.exists(data_dir):
         print(f"[ERROR] Data directory not found: {data_dir}")
-        print("[INFO] Please ensure the data files are in the 'data/' directory")
         return
     
     # Find all .mat files
@@ -60,7 +59,6 @@ def main():
     
     if not mat_files:
         print(f"[WARN] No .mat files found in {data_dir}")
-        print("[INFO] If you already have .npz files, no conversion is needed.")
         return
     
     print(f"Found {len(mat_files)} .mat files to convert.")
@@ -79,8 +77,8 @@ def main():
     print(f"Conversion complete: {success_count}/{len(mat_files)} files converted successfully.")
     
     if success_count == len(mat_files):
-        print("[INFO] All files converted successfully!")
-        print("[INFO] You can now run: python Script.py")
+        print("All files converted successfully!")
+        print("You can now run: python Script.py")
     else:
         print(f"[WARN] {len(mat_files) - success_count} files failed to convert.")
 
