@@ -170,15 +170,15 @@ class PartInfoLv2:
             
             # Complete split distributions
             self.complete_split[0] = GVar.Zeros(1, 9)
-            self.complete_split[0].value[EncodeCSD([0, 0]) - 1] = 1
+            self.complete_split[0].value[0,EncodeCSD([0, 0]) - 1] = 1 # Add 0
             
             self.complete_split[1] = GVar.Zeros(1, 9)
             idx_02 = EncodeCSD([0, 2]) - 1
             idx_20 = EncodeCSD([2, 0]) - 1
             idx_11 = EncodeCSD([1, 1]) - 1
-            self.complete_split[1].value[idx_02] = self.split_0.value[0]
-            self.complete_split[1].value[idx_20] = self.split_0.value[0]
-            self.complete_split[1].value[idx_11] = 1 - 2 * self.split_0.value[0]
+            self.complete_split[1].value[0,idx_02] = self.split_0.value[0]
+            self.complete_split[1].value[0,idx_20] = self.split_0.value[0]
+            self.complete_split[1].value[0,idx_11] = 1 - 2 * self.split_0.value[0]
             
             self.complete_split[2] = self.complete_split[1]
         
@@ -198,20 +198,20 @@ class PartInfoLv2:
             self.complete_split[0] = GVar.Zeros(1, 9)
             idx_01 = EncodeCSD([0, 1]) - 1
             idx_10 = EncodeCSD([1, 0]) - 1
-            self.complete_split[0].value[idx_01] = 0.5
-            self.complete_split[0].value[idx_10] = 0.5
+            self.complete_split[0].value[0,idx_01] = 0.5
+            self.complete_split[0].value[0,idx_10] = 0.5
             
             self.complete_split[1] = GVar.Zeros(1, 9)
-            self.complete_split[1].value[idx_01] = 0.5
-            self.complete_split[1].value[idx_10] = 0.5
+            self.complete_split[1].value[0,idx_01] = 0.5
+            self.complete_split[1].value[0,idx_10] = 0.5
             
             self.complete_split[2] = GVar.Zeros(1, 9)
             idx_02 = EncodeCSD([0, 2]) - 1
             idx_20 = EncodeCSD([2, 0]) - 1
             idx_11 = EncodeCSD([1, 1]) - 1
-            self.complete_split[2].value[idx_02] = self.split_0.value[0]
-            self.complete_split[2].value[idx_20] = self.split_0.value[0]
-            self.complete_split[2].value[idx_11] = 1 - 2 * self.split_0.value[0]
+            self.complete_split[2].value[0,idx_02] = self.split_0.value[0]
+            self.complete_split[2].value[0,idx_20] = self.split_0.value[0]
+            self.complete_split[2].value[0,idx_11] = 1 - 2 * self.split_0.value[0]
         
         elif self.shape_type in ['013', '031']:
             # Inner product tensor
@@ -221,7 +221,7 @@ class PartInfoLv2:
             
             # Complete split distributions
             self.complete_split[0] = GVar.Zeros(1, 9)
-            self.complete_split[0].value[EncodeCSD([0, 0]) - 1] = 1
+            self.complete_split[0].value[0,EncodeCSD([0, 0]) - 1] = 1
             
             self.complete_split[1] = GVar.Zeros(1, 9)
             self.complete_split[2] = GVar.Zeros(1, 9)
@@ -231,19 +231,19 @@ class PartInfoLv2:
                 idx_10 = EncodeCSD([1, 0]) - 1
                 idx_12 = EncodeCSD([1, 2]) - 1
                 idx_21 = EncodeCSD([2, 1]) - 1
-                self.complete_split[1].value[idx_01] = 0.5
-                self.complete_split[1].value[idx_10] = 0.5
-                self.complete_split[2].value[idx_12] = 0.5
-                self.complete_split[2].value[idx_21] = 0.5
+                self.complete_split[1].value[0,idx_01] = 0.5
+                self.complete_split[1].value[0,idx_10] = 0.5
+                self.complete_split[2].value[0,idx_12] = 0.5
+                self.complete_split[2].value[0,idx_21] = 0.5
             else:  # '031'
                 idx_12 = EncodeCSD([1, 2]) - 1
                 idx_21 = EncodeCSD([2, 1]) - 1
                 idx_01 = EncodeCSD([0, 1]) - 1
                 idx_10 = EncodeCSD([1, 0]) - 1
-                self.complete_split[1].value[idx_12] = 0.5
-                self.complete_split[1].value[idx_21] = 0.5
-                self.complete_split[2].value[idx_01] = 0.5
-                self.complete_split[2].value[idx_10] = 0.5
+                self.complete_split[1].value[0,idx_12] = 0.5
+                self.complete_split[1].value[0,idx_21] = 0.5
+                self.complete_split[2].value[0,idx_01] = 0.5
+                self.complete_split[2].value[0,idx_10] = 0.5
         
         else:  # '004'
             self.num_block_contribution = GVar(param_manager.num_input, [0, 0, 0])
@@ -251,13 +251,14 @@ class PartInfoLv2:
             
             # Complete split distributions
             self.complete_split[0] = GVar.Zeros(1, 9)
-            self.complete_split[0].value[EncodeCSD([0, 0]) - 1] = 1
+            self.complete_split[0].value[0,EncodeCSD([0, 0]) - 1] = 1
             
             self.complete_split[1] = GVar.Zeros(1, 9)
-            self.complete_split[1].value[EncodeCSD([0, 0]) - 1] = 1
+            self.complete_split[1].value[0,EncodeCSD([0, 0]) - 1] = 1
             
             self.complete_split[2] = GVar.Zeros(1, 9)
-            self.complete_split[2].value[EncodeCSD([2, 2]) - 1] = 1
+            self.complete_split[2].value[0, EncodeCSD([2, 2]) - 1] = 1
+            #self.complete_split[2].value[EncodeCSD([2, 2]) - 1] = 1
         
         # Rotate and multiply by part_frac
         # Note: Simplified implementation - rotate values directly

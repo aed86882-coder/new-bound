@@ -8,15 +8,6 @@ from src.verify import VerifyOmega, VerifyAlpha, VerifyMu
 
 
 def main():
-    """Run all verification tests."""
-    print("=" * 70)
-    print("Matrix Multiplication Bounds Verification - Python Implementation")
-    print("=" * 70)
-    print()
-    
-    # Verify main bounds
-    print("Verifying main bounds:")
-    print("-" * 70)
 
     VerifyOmega(5, 1.00, 'data/K100_2.37155181.npz')
 

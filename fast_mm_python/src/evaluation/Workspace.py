@@ -130,9 +130,9 @@ class Workspace:
         
         # print(f"[INFO] Workspace built with {self.param_manager.num_input} parameters")
         # print(f"[INFO] Parts created at levels 2-{max_level}")
-        for level in range(2, max_level + 1):
-            if level in self.parts:
-                print(f"       Level {level}: {len(self.parts[level])} parts")
+        # for level in range(2, max_level + 1):
+        #     if level in self.parts:
+        #         print(f"       Level {level}: {len(self.parts[level])} parts")
     
     def SetInitial(self):
         """
